@@ -16,7 +16,7 @@ where
 
 impl EncodedMessage {
     pub fn decode(&self) -> Result<Vec<u8>, base64::DecodeError> {
-        base64::decode(&self.data)
+        Ok(self.data.as_bytes().to_vec())
     }
 
     pub fn new<T: serde::Serialize>(data: &T) -> Self {
